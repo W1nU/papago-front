@@ -23,8 +23,8 @@ export interface IPost {
 export interface IUser {
   email: string;
   password: string;
-  name: string;
-  ticket: number;
+  name?: string;
+  ticket?: number;
 }
 
 interface IUserWrap {
