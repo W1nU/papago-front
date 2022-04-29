@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { useRecoilState } from "recoil";
 import storage from "../../storage/storage";
 
@@ -6,8 +6,12 @@ const Header = () => {
     const [users, setUsers] = useRecoilState(storage.users);
     const [user, setUser] = useRecoilState(storage.currentUser);
 
+    useEffect(() => {
+      console.log(user);
+    }, [user])
+
     const login = () => {
-        setUser(users["jsw9808@gmail.com"]);
+      window.location.replace("http://localhost:3000/login");
     };
 
     const logout = () => {
@@ -19,10 +23,12 @@ const Header = () => {
             <div className="flex items-centerbg-white rounded shadow-lg px-7 h-20">
                 <nav className="flex flex-1 justify-between items-center">
                     <div className="flex items-center space-x-3 pr-6">
+                      <a href="/">
                         <img
                             className="cursor-pointer p-1 rounded-full h-10"
                             src={require("../../asset/image/logo.png")}
                         />
+                        </a>
                     </div>
 
                     {user ? (
@@ -55,7 +61,7 @@ const Header = () => {
                                 <div className="w-3" />
                                 <div>
                                     <div className="flex items-center justify-between">
-                                        <div className="font-bold">승우</div>
+                                        <div className="font-bold">{user.name}</div>
                                         <div className="text-gray-500 text-sm" onClick={logout}>
                                             로그아웃
                                         </div>
