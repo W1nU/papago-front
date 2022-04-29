@@ -31,7 +31,7 @@ interface IReservation {
 }
 export interface IState {
   users: RecoilState<IUserWrap>;
-  currentUser: RecoilState<IUser> | RecoilState<null>;
+  currentUser: RecoilState<IUser | null>;
   posts: RecoilState<IPost[]>;
   reservation: RecoilState<IReservation[]>;
 }
@@ -50,7 +50,7 @@ const storage: IState = {
 
   currentUser: atom({
     key: "currentUser",
-    default: null,
+    default: null as IUser | null,
   }),
 
   posts: atom({

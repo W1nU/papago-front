@@ -3,14 +3,15 @@ import { useRecoilState } from "recoil";
 import storage from "../../storage/storage";
 
 const Header = () => {
-  const [email, setEmail] = useRecoilState(storage.userEmail);
+  const [user, setUser] = useRecoilState(storage.currentUser);
+  const [users, setUsers] = useRecoilState(storage.users);
 
   const login = () => {
-    setEmail("jsw9808@gmail.com");
+    setUser(users["jsw9808@gmail.com"]);
   };
 
   const logout = () => {
-    setEmail("");
+    setUser(null);
   };
 
   return (
@@ -25,7 +26,7 @@ const Header = () => {
           </div>
 
           <div>
-            {email ? (
+            {user ? (
               <div className="flex align-center justify-center">
                 <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full">
                   <svg
@@ -49,7 +50,7 @@ const Header = () => {
                       로그아웃
                     </div>
                   </div>
-                  <div className="text-gray-400 text-sm">{email}</div>
+                  <div className="text-gray-400 text-sm">{user.email}</div>
                 </div>
               </div>
             ) : (
