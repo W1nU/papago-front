@@ -19,14 +19,16 @@ const Header = () => {
       <div className="flex items-centerbg-white rounded shadow-lg px-7 h-20">
         <nav className="flex flex-1 justify-between items-center">
           <div className="flex items-center space-x-3 pr-6">
-            <img
-              className="cursor-pointer p-1 rounded-full h-10"
-              src={require("../../asset/image/logo.png")}
-            />
+            <a href={"/"} className="flex items-center">
+              <img
+                className="cursor-pointer p-1 rounded-full h-10"
+                src={require("../../asset/image/logo.png")}
+              />
+            </a>
           </div>
 
           {user ? (
-            <a href={"ticket"} className="flex items-center">
+            <a href={"/ticket"} className="flex items-center">
               <img
                 className="w-11 mr-2"
                 src={require("../../asset/image/ticket.png")}
