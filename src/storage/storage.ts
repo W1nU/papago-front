@@ -1,4 +1,7 @@
 import { atom, RecoilState } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
 
 interface IPost {
   id: number;
@@ -46,21 +49,25 @@ const storage: IState = {
         name: "정승우",
       },
     } as IUserWrap,
+    effects_UNSTABLE: [persistAtom],
   }),
 
   currentUser: atom({
     key: "currentUser",
     default: null as IUser | null,
+    effects_UNSTABLE: [persistAtom],
   }),
 
   posts: atom({
     key: "posts",
     default: [] as IPost[],
+    effects_UNSTABLE: [persistAtom],
   }),
 
   reservation: atom({
     key: "reservation",
     default: [] as IReservation[],
+    effects_UNSTABLE: [persistAtom],
   }),
 };
 
