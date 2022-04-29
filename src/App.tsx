@@ -17,15 +17,6 @@ function App() {
           <Route path="/enroll" element={<EnrollClass />} />
         </Routes>
       </BrowserRouter>
-      <div>
-        <Header></Header>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/viewPage/:id" element={<ViewPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
     </div>
   );
 }
