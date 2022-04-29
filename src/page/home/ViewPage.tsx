@@ -42,6 +42,7 @@ export const ViewPage = () => {
     }
   }, [id, posts]);
 
+
   return (
     <div className="bg-white">
       <div className="pt-6">
