@@ -232,7 +232,7 @@ const Home = () => {
                   return (
                     <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
                       <a
-                        href=""
+                        href={"/post/" + post.id}
                         className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
                       >
                         <div className="relative pb-48 overflow-hidden">

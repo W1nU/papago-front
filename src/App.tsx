@@ -21,6 +21,7 @@ function App() {
           <Route path="/reserve/:no" element={<Reserve />} />
           <Route path="/ticket" element={<Ticket />} />
           <Route path="/enroll" element={<EnrollClass />} />
+          <Route path="/post/:id" element={<ViewPage />} />
         </Routes>
       </BrowserRouter>
     </div>

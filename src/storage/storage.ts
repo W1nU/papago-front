@@ -23,7 +23,7 @@ export interface IPost {
 export interface IUser {
   email: string;
   password: string;
-  name?: string;
+  name: string;
   ticket: number;
 }
 
