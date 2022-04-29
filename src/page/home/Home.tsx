@@ -50,7 +50,7 @@ const Home = () => {
                           부산시 동래구
                         </span>
                         <a
-                          href=""
+                          href="/post/1"
                           className="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0"
                         >
                           <span>자세히 보기 </span>
@@ -87,7 +87,7 @@ const Home = () => {
                           부산시 남구
                         </span>
                         <a
-                          href=""
+                          href="/post/2"
                           className="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0"
                         >
                           <span>자세히 보기</span>
@@ -124,10 +124,10 @@ const Home = () => {
                           부산시 연제구
                         </span>
                         <a
-                          href=""
+                          href="/post/3"
                           className="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0"
                         >
-                          <span>자세히 보기</span>
+                          <span>자세히 보기 </span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0"
@@ -161,7 +161,7 @@ const Home = () => {
                           부산시 해운대구
                         </span>
                         <a
-                          href=""
+                          href="/post/4"
                           className="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0"
                         >
                           <span>자세히 보기 </span>
