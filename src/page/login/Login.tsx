@@ -15,7 +15,7 @@ const LoginPage = () => {
               email: email,
               password: password,
               name: user[email].name,
-              ticket: 
+              ticket: user[email].ticket
             }
             setCurrentUser(currentUser);
             window.location.replace("http://localhost:3000");

@@ -21,7 +21,8 @@ const RegisterPage = () => {
             const newUser: IUser = {
                 email: email,
                 password: password,
-                name: name
+                name: name,
+                ticket: 0
             }
     
             user[email] = newUser;

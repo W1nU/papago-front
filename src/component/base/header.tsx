@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import storage from "../../storage/storage";
 
@@ -23,16 +23,16 @@ const Header = () => {
             <div className="flex items-centerbg-white rounded shadow-lg px-7 h-20">
                 <nav className="flex flex-1 justify-between items-center">
                     <div className="flex items-center space-x-3 pr-6">
-                      <a href="/">
-                        <img
-                            className="cursor-pointer p-1 rounded-full h-10"
-                            src={require("../../asset/image/logo.png")}
-                        />
+                        <a href={"/"} className="flex items-center">
+                            <img
+                                className="cursor-pointer p-1 rounded-full h-10"
+                                src={require("../../asset/image/logo.png")}
+                            />
                         </a>
                     </div>
 
                     {user ? (
-                        <a href={"ticket"} className="flex items-center">
+                        <a href={"/ticket"} className="flex items-center">
                             <img
                                 className="w-11 mr-2"
                                 src={require("../../asset/image/ticket.png")}
@@ -62,7 +62,7 @@ const Header = () => {
                                 <div>
                                     <div className="flex items-center justify-between">
                                         <div className="font-bold">{user.name}</div>
-                                        <div className="text-gray-500 text-sm" onClick={logout}>
+                                        <div className="text-gray-500 text-sm cursor-pointer" onClick={logout}>
                                             로그아웃
                                         </div>
                                     </div>
@@ -71,7 +71,7 @@ const Header = () => {
                             </div>
                         ) : (
                             <div>
-                                <div onClick={login}>Login</div>
+                                <div className="cursor-pointer" onClick={login}>Login</div>
                             </div>
                         )}
                     </div>
