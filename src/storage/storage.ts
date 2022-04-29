@@ -19,7 +19,8 @@ export interface IPost {
   longitude: string;
   limit: number; // 최대 참가 가능 인원 수
 }
-interface IUser {
+
+export interface IUser {
   email: string;
   password: string;
   name: string;
@@ -27,12 +28,13 @@ interface IUser {
 }
 
 interface IUserWrap {
-  [key: string]: IUser;
+  [key: string]: IUser; // key값은 email
 }
 export interface IReservation {
   userEmail: string;
-  reservedPostId: number;
+  reservedPostId?: number;
   number: number;
+  comment: string;
 }
 export interface IState {
   users: RecoilState<IUserWrap>;
