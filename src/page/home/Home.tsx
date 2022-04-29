@@ -217,7 +217,9 @@ const Home = () => {
                   파파고와 함께라면 언제든 모험준비 완료!
                 </p>
               </div>
-              <a className="text-lg">+ 모험 열기</a>
+              <a className="text-lg" href="/enroll">
+                + 모험 열기
+              </a>
             </div>
 
             <div className="container mx-auto">

@@ -16,11 +16,13 @@
     "axios": "^0.27.2",
     "postcss": "^8.4.12",
     "react": "^18.1.0",
+    "react-datetime-picker": "^3.5.0",
     "react-daum-postcode": "^3.0.1",
     "react-dom": "^18.1.0",
     "react-query": "^3.38.0",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
+    "react-time-picker": "^4.5.0",
     "recoil": "^0.7.2",
     "recoil-persist": "^4.1.0",
     "tailwindcss": "^3.0.24",
@@ -50,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-datetime-picker": "^3.4.1"
   }
 }
