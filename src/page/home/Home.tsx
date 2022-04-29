@@ -24,6 +24,10 @@ const Home = () => {
     }
   }, [reservation, currentUser]);
 
+  useEffect(() => {
+    console.log(reservation);
+  })
+
   return (
     <div>
       <div>

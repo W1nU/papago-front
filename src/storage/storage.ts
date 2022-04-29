@@ -3,7 +3,7 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-interface IPost {
+export interface IPost {
   id: number;
   title: string;
   content: string;
@@ -30,8 +30,9 @@ interface IUserWrap {
 }
 export interface IReservation {
   userEmail: string;
-  reservedPostId: number;
+  reservedPostId?: number;
   number: number;
+  comment: string;
 }
 export interface IState {
   users: RecoilState<IUserWrap>;
@@ -61,7 +62,21 @@ const storage: IState = {
 
   posts: atom({
     key: "posts",
-    default: [] as IPost[],
+    default: [{
+      id:1,
+      title:"쿵푸팬더",
+      content:"곰돌이 푸 쎄게 때려보기",
+      hostEmail: "mma771@naver.com",
+      images: ["./dog.png"],
+      fromDate: new Date(),
+      toDate: new Date(),
+      postNumber: "555",
+      address: "zip",
+      detailedAddress: "alzip",
+      latitude: "1",
+      longitude: "2",
+      limit: 200
+    }] as IPost[],
     effects_UNSTABLE: [persistAtom],
   }),
 
