@@ -27,12 +27,12 @@ export interface IUser {
   ticket: number;
 }
 
-interface IUserWrap {
+export interface IUserWrap {
   [key: string]: IUser; // key값은 email
 }
 export interface IReservation {
   userEmail: string;
-  reservedPostId?: number;
+  reservedPostId: number;
   number: number;
   comment: string;
 }
