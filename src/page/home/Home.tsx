@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRecoilState, useResetRecoilState } from "recoil";
+import storage, { IReservation } from "../../storage/storage";
 
 const Home = () => {
+  const [reservation, setReservation] = useRecoilState(storage.reservation);
+  const [currentUser, setCurrentUser] = useRecoilState(storage.currentUser);
+
+  const [myReservation, setMyReservation] = useState<IReservation[]>([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      const userReservation: IReservation[] = [];
+
+      const { email } = currentUser;
+
+      reservation.forEach((item) => {
+        if (item.userEmail === email) {
+          userReservation.push(item);
+        }
+      });
+
+      setMyReservation(userReservation);
+    }
+  }, [reservation, currentUser]);
+
   return (
     <div>
       <div>
@@ -93,7 +116,7 @@ const Home = () => {
                   <div className="group relative flex cursor-pointer justify-between rounded-xl bg-rose-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-rose-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
                     <div className="relative space-y-1 p-4">
                       <h4 className="text-lg text-rose-900">
-                        로미와 함께 춤을, 강아지와 힐링
+                        로미와 함께 산책, 강아지와 힐링
                       </h4>
                       <div className="relative h-6 text-rose-800 text-sm">
                         <span className="transition duration-300 group-hover:invisible group-hover:opacity-0">
@@ -130,7 +153,7 @@ const Home = () => {
                   <div className="group relative flex cursor-pointer justify-between rounded-xl bg-fuchsia-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-fuchsia-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
                     <div className="relative w-7/12 space-y-1 p-4">
                       <h4 className="text-lg text-fuchsia-900">
-                        의사 선생님의 세균은 몸에 나빠요!
+                        기장님과 함꼐 떠나는 하늘여행
                       </h4>
                       <div className="relative h-6 text-fuchsia-800 text-sm">
                         <span className="transition duration-300 group-hover:invisible group-hover:opacity-0">
@@ -157,8 +180,8 @@ const Home = () => {
                       </div>
                     </div>
                     <img
-                      className="absolute -bottom-7 right-0 w-[4.3rem] transition duration-300 group-hover:scale-[1.4]"
-                      src={require("../../asset/image/doctor.png")}
+                      className="absolute -bottom-2 right-0 w-[7rem] transition duration-300 group-hover:scale-[1.4]"
+                      src={require("../../asset/image/pilot.png")}
                       alt=""
                     />
                   </div>
@@ -174,6 +197,13 @@ const Home = () => {
                   예약하신 모험이 다가오고 있어요!
                 </p>
               </div>
+              <div className="flex w-full mt-20 items-center justify-center">
+                {myReservation.length === 0 ? (
+                  <div className="text-lg">예약된 모험이 없어요 😢</div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -184,6 +214,119 @@ const Home = () => {
               <p className="mt-2 text-gray-600">
                 파파고와 함께라면 언제든 모험준비 완료!
               </p>
+            </div>
+
+            <div className="container mx-auto">
+              <div className="flex flex-wrap -mx-4">
+                <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                  <a
+                    href=""
+                    className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+                  >
+                    <div className="relative pb-48 overflow-hidden">
+                      <img
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src={require("../../asset/image/tae.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                    <div className="p-4">
+                      <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+                        운동
+                      </span>
+                      <h2 className="mt-2 mb-2  font-bold">
+                        현직 태권도 관장입니다.
+                      </h2>
+                      <p className="text-sm">
+                        안녕하세요. 저는 동래구에서 태권도 도장을 운영중인
+                        예은이 아빠입니다. 심신이 지친 요즘, 태권도와 함께 땀도
+                        흘리고 즐거운 추억을 만들어보시는 건 어떨까요?
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                  <a
+                    href=""
+                    className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+                  >
+                    <div className="relative pb-48 overflow-hidden">
+                      <img
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src={require("../../asset/image/binu.webp")}
+                        alt=""
+                      />
+                    </div>
+                    <div className="p-4">
+                      <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+                        만들기
+                      </span>
+                      <h2 className="mt-2 mb-2  font-bold">
+                        천년비누 만들어보세요^^
+                      </h2>
+                      <p className="text-sm">
+                        안녕하세요! 저는 비누공방을 운영하는 사람입니다. 혹시
+                        이번주말 자녀와 함께 천년비누 만들어보시면 어떨까요?
+                        천연비누는 미백, 피부트러블 완화 등에 효능이 좋답니다~!
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                  <a
+                    href=""
+                    className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+                  >
+                    <div className="relative pb-48 overflow-hidden">
+                      <img
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src={require("../../asset/image/dog_walk.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                    <div className="p-4">
+                      <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+                        놀이
+                      </span>
+                      <h2 className="mt-2 mb-2  font-bold">
+                        평소에 강아지 좋아하시는 분들?
+                      </h2>
+                      <p className="text-sm">
+                        저희는 귀여운 강아지와 함께 살고 있는데요, 이번 주말에
+                        자녀분들과 같이 공원에서 만나서 부모님들은 저희와 커피
+                        한잔하시고 아이들은 강아지와 함꼐 뛰어노는건 어떠실까요?
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                  <a
+                    href=""
+                    className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+                  >
+                    <div className="relative pb-48 overflow-hidden">
+                      <img
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src={require("../../asset/image/home.jpeg")}
+                        alt=""
+                      />
+                    </div>
+                    <div className="p-4">
+                      <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+                        직업
+                      </span>
+                      <h2 className="mt-2 mb-2  font-bold">
+                        비행기 시뮬레이션 체험
+                      </h2>
+                      <p className="text-sm">
+                        안녕하세요. 저는 항공사 기장이고 아들을 가진 아빠입니다.
+                        혹시 파일럿이 꿈인 자녀가 있다면, 이번주 저희집에서
+                        시뮬레이터로 비행기 조종을 체험해보는건 어떨까요?
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

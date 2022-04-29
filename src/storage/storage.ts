@@ -24,7 +24,7 @@ interface IUser {
 interface IUserWrap {
   [key: string]: IUser;
 }
-interface IReservation {
+export interface IReservation {
   userEmail: string;
   reservedPostId: number;
   number: number;
