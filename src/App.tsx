@@ -4,6 +4,7 @@ import Home from "./page/home/Home";
 import EnrollClass from "./component/base/enrollClass";
 import Ticket from "./page/ticket/Ticket";
 import Header from "./component/base/header";
+import ViewPage from "./page/home/ViewPage";
 
 function App() {
   return (
@@ -16,6 +17,15 @@ function App() {
           <Route path="/enroll" element={<EnrollClass />} />
         </Routes>
       </BrowserRouter>
+      <div>
+        <Header></Header>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/viewPage/:id" element={<ViewPage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
