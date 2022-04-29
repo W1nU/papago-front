@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
+import storage from "../../storage/storage";
+import { useRecoilState } from "recoil";
 
 const accounts = {
   "jse9808@gmail.com": {
@@ -8,7 +10,12 @@ const accounts = {
   },
 };
 const Home = () => {
-  return <div></div>;
+  const [user, setUser] = useRecoilState(storage.users);
+  useEffect(() => {
+    console.log(user);
+  }) 
+  return <div>
+  </div>;
 };
 
 export default Home;

@@ -15,14 +15,15 @@ interface IPost {
   longitude: string;
   limit: number; // 최대 참가 가능 인원 수
 }
-interface IUser {
+
+export interface IUser {
   email: string;
   password: string;
-  name: string;
+  name?: string;
 }
 
 interface IUserWrap {
-  [key: string]: IUser;
+  [key: string]: IUser; // key값은 email
 }
 interface IReservation {
   userEmail: string;

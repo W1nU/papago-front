@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useRecoilState } from "recoil";
 import storage from "../../storage/storage";
 
@@ -6,8 +6,12 @@ const Header = () => {
   const [user, setUser] = useRecoilState(storage.currentUser);
   const [users, setUsers] = useRecoilState(storage.users);
 
+  useEffect(() => {
+    console.log(user);
+  }, [user])
+
   const login = () => {
-    setUser(users["jsw9808@gmail.com"]);
+    window.location.replace("http://localhost:3000/login");
   };
 
   const logout = () => {
@@ -19,12 +23,13 @@ const Header = () => {
       <div className="flex items-centerbg-white rounded shadow-lg px-7 h-20">
         <nav className="flex flex-1 justify-between items-center">
           <div className="flex items-center space-x-3 pr-6">
+            <a href="/">
             <img
               className="cursor-pointer p-1 rounded-full h-10"
               src={require("../../asset/image/logo.png")}
             />
+            </a>
           </div>
-
           <div>
             {user ? (
               <div className="flex align-center justify-center">
