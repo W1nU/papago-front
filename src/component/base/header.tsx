@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import storage from "../../storage/storage";
 
@@ -19,10 +19,12 @@ const Header = () => {
             <div className="flex items-centerbg-white rounded shadow-lg px-7 h-20">
                 <nav className="flex flex-1 justify-between items-center">
                     <div className="flex items-center space-x-3 pr-6">
-                        <img
-                            className="cursor-pointer p-1 rounded-full h-10"
-                            src={require("../../asset/image/logo.png")}
-                        />
+                        <a href={"/"} className="flex items-center">
+                            <img
+                                className="cursor-pointer p-1 rounded-full h-10"
+                                src={require("../../asset/image/logo.png")}
+                            />
+                        </a>
                     </div>
 
                     {user ? (
