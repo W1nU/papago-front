@@ -2,6 +2,7 @@ import { atom, RecoilState } from "recoil";
 
 interface IPost {
   id: number;
+  category: string;
   title: string;
   content: string;
   hostEmail: string;

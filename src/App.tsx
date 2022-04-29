@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./component/base/header";
+//mport Header from "./component/base/header";
 import Home from "./page/home/Home";
+import EnrollClass from "./component/base/enrollClass"
 
 function App() {
   return (
     <div>
-      <Header></Header>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<EnrollClass />} />
         </Routes>
       </BrowserRouter>
     </div>
