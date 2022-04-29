@@ -6,6 +6,7 @@ const Header = () => {
   const [users, setUsers] = useRecoilState(storage.users);
   const [user, setUser] = useRecoilState(storage.currentUser);
 
+
   const login = () => {
     window.location.replace("http://localhost:3000/login");
   };
@@ -57,7 +58,7 @@ const Header = () => {
                 <div className="w-3" />
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="font-bold">승우</div>
+                    <div className="font-bold">{user.name}</div>
                     <div className="text-gray-500 text-sm" onClick={logout}>
                       로그아웃
                     </div>

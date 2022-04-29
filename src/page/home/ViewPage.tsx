@@ -23,6 +23,29 @@ export const ViewPage = () => {
   const [myReservation, setMyReservation] = useState<IReservation>();
   const [isReserved, setIsReserved] = useState<Boolean>(false);
   const [child, setChild] = useState(0);
+  
+  const doneTask = () => {
+    setReservation(reservation.map(reserve => {
+      return myReservation?.reservedPostId === reserve.reservedPostId
+        ? {...reserve, done:true}
+        :reserve
+    }))
+    posts.map(post => {
+      if(post.id === myReservation?.reservedPostId) {
+        console.log(post.id);
+        const user = users[post.hostEmail];
+        const changeUser:IUser = {
+          email: user.email,
+          password: user.password,
+          name: user.name,
+          ticket: user.ticket+1,
+        }
+        users[post.hostEmail] = changeUser;
+      }
+    })
+    alert("모험을 완료하였습니다.");
+    window.location.replace("http://localhost:3000");
+  }
 
   useEffect(() => {
     if (currentUser) {
@@ -105,7 +128,8 @@ export const ViewPage = () => {
                 참여 신청하기
               </button>
             ) : (
-              <button className="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <button className="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={doneTask}>
                 모험 완료하기
               </button>
             )}

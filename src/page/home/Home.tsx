@@ -38,6 +38,7 @@ const Home = () => {
     }
   }, [reservation, currentUser]);
 
+
   return (
     <div>
       <div>
@@ -216,6 +217,7 @@ const Home = () => {
                   <div className="text-lg mt-20">예약된 모험이 없어요 😢</div>
                 ) : (
                   myReservation.map((reservation) => {
+                    if(reservation.done==false){
                     const post = posts[reservation.reservedPostId - 1];
                     return (
                       <div
@@ -224,7 +226,7 @@ const Home = () => {
                             "http://localhost:3000" + "/post/" + post.id
                           )
                         }
-                        className="flex items-center w-full mt-10"
+                        className="flex items-center w-full mt-10 cursor-pointer"
                       >
                         <img
                           src={post.images[0]}
@@ -265,6 +267,7 @@ const Home = () => {
                         </div>
                       </div>
                     );
+                  }
                   })
                 )}
               </div>

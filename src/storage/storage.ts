@@ -24,7 +24,7 @@ export interface IUser {
   email: string;
   password: string;
   name?: string;
-  ticket?: number;
+  ticket: number;
 }
 
 export interface IUserWrap {
@@ -35,6 +35,7 @@ export interface IReservation {
   reservedPostId: number;
   number: number;
   comment: string;
+  done: boolean;
 }
 export interface IState {
   users: RecoilState<IUserWrap>;
