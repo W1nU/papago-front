@@ -3,7 +3,7 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-interface IPost {
+export interface IPost {
   id: number;
   category: string;
   title: string;
