@@ -27,12 +27,12 @@ export interface IUser {
   ticket?: number;
 }
 
-interface IUserWrap {
+export interface IUserWrap {
   [key: string]: IUser; // key값은 email
 }
 export interface IReservation {
   userEmail: string;
-  reservedPostId?: number;
+  reservedPostId: number;
   number: number;
   comment: string;
 }
@@ -71,7 +71,7 @@ const storage: IState = {
         category: "운동",
         title: "현직 태권도 관장입니다.",
         content:
-          "안녕하세요. 저는 동래구에서 태권도 도장을 운영중인 예은이 아빠입니다. 심신이 지친 요즘, 태권도와 함께 땀도 흘리고 즐거운 추억을 만들어보시는 건 어떨까요?",
+          "안녕하세요. 저는 동래구에서 태권도 도장을 운영중인 예은이 아빠입니다. 심신이 지친 요즘, 아이들과 태권도로 땀도 흘리고 즐거운 추억을 만들어보시는 건 어떨까요? 성장기인 아이들에게 성장 발달에 도움이 되는 태권도 프로그램으로 구성해답니다. ",
         hostEmail: "jsw9808@gmail.com",
         images: [require("../asset/image/tae.jpeg")],
         fromDate: new Date("2022-04-30T20:00:00"),
@@ -86,9 +86,9 @@ const storage: IState = {
       {
         id: 2,
         category: "만들기",
-        title: "천년비누 만들어보세요^^",
+        title: "천연비누 만들어보세요^^",
         content:
-          "안녕하세요! 저는 비누공방을 운영하는 사람입니다. 혹시 이번주말 자녀와 함께 천년비누 만들어보시면 어떨까요? 천연비누는 미백, 피부트러블 완화 등에 효능이 좋답니다~!",
+          "안녕하세요! 저는 비누공방을 운영하는 사람입니다. 혹시 이번 주말 자녀와 함께 천연비누 만들어보시면 어떨까요? 아이들과 오감체험뿐만 아니라 미백, 피부트러블 완화에 좋은 천연비누도 만들어 가세요!",
         hostEmail: "jsw9808@gmail.com",
         images: [require("../asset/image/binu.webp")],
         fromDate: new Date("2022-04-30T20:00:00"),
@@ -105,7 +105,7 @@ const storage: IState = {
         category: "놀이",
         title: "평소에 강아지 좋아하시는 분들?",
         content:
-          "저희는 귀여운 강아지와 함께 살고 있는데요, 이번 주말에 자녀분들과 같이 공원에서 만나서 부모님들은 저희와 커피 한잔하시고 아이들은 강아지와 함꼐 뛰어노는건 어떠실까요?",
+          "저희는 귀여운 강아지와 함께 살고 있는데요, 이번 주말에 자녀분들과 같이 공원에서 만나서 부모님들은 저희와 커피 한잔하시고 아이들은 강아지와 함꼐 뛰어노는건 어떠실까요? 저희 강아지 '로미'의 품종은 치와와이고 매우 온순하고 사람을 좋아해서 사람을 잘 따른답니다 ㅎㅎ ",
         hostEmail: "jsw9808@gmail.com",
         images: [require("../asset/image/dog_walk.jpeg")],
         fromDate: new Date("2022-04-30T20:00:00"),
@@ -122,7 +122,7 @@ const storage: IState = {
         category: "직업",
         title: "비행기 시뮬레이션 체험",
         content:
-          "안녕하세요. 저는 항공사 기장이고 아들을 가진 아빠입니다. 혹시 파일럿이 꿈인 자녀가 있다면, 이번주 저희집에서 시뮬레이터로 비행기 조종을 체험해보는건 어떨까요?",
+          "안녕하세요. 저는 항공사 기장이고 아들을 가진 아빠입니다. 혹시 파일럿이 꿈인 자녀가 있다면, 이번주 저희집에서 시뮬레이터로 비행기 조종을 체험해보는건 어떨까요? 간단한 비행 조종 안전 규칙과 조종 관련 지식을 알려주는 시간도 가질 예정입니다. 자녀의 꿈에 날개를 다는 기회를 만들어 가세요 ^^ ",
         hostEmail: "jsw9808@gmail.com",
         images: [require("../asset/image/home.jpeg")],
         fromDate: new Date("2022-04-30T20:00:00"),

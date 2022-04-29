@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import storage, { IReservation } from "../../storage/storage";
+import moment from "moment-timezone";
 
 const Home = () => {
   const [reservation, setReservation] = useRecoilState(storage.reservation);
@@ -8,6 +9,18 @@ const Home = () => {
   const [posts, setPosts] = useRecoilState(storage.posts);
 
   const [myReservation, setMyReservation] = useState<IReservation[]>([]);
+
+  const parseDate = (days: number) => {
+    if (days === 0) {
+      return "오늘 🎉";
+    } else if (days === 1) {
+      return "내일";
+    } else if (days === 2) {
+      return "모레";
+    } else {
+      return days + "일 후";
+    }
+  };
 
   useEffect(() => {
     if (currentUser) {
@@ -24,10 +37,6 @@ const Home = () => {
       setMyReservation(userReservation);
     }
   }, [reservation, currentUser]);
-
-  useEffect(() => {
-    console.log(reservation);
-  })
 
   return (
     <div>
@@ -202,11 +211,61 @@ const Home = () => {
                   예약하신 모험이 다가오고 있어요!
                 </p>
               </div>
-              <div className="flex w-full mt-20 items-center justify-center">
+              <div className="flex w-full flex-col items-center justify-center">
                 {myReservation.length === 0 ? (
-                  <div className="text-lg">예약된 모험이 없어요 😢</div>
+                  <div className="text-lg mt-20">예약된 모험이 없어요 😢</div>
                 ) : (
-                  <div></div>
+                  myReservation.map((reservation) => {
+                    const post = posts[reservation.reservedPostId - 1];
+                    return (
+                      <div
+                        onClick={() =>
+                          window.location.replace(
+                            "http://localhost:3000" + "/post/" + post.id
+                          )
+                        }
+                        className="flex items-center w-full mt-10"
+                      >
+                        <img
+                          src={post.images[0]}
+                          className="rounded-full w-[4rem] cover"
+                        />
+                        <div className="w-5" />
+                        <div className="w-full">
+                          <div className="flex justify-between items-center">
+                            <div className="font-bold text-xl">
+                              {post.title}
+                            </div>
+                            <div className="text-base text-gray-500">
+                              {parseDate(
+                                Math.floor(
+                                  moment
+                                    .duration(
+                                      moment(post.fromDate).diff(moment.now())
+                                    )
+                                    .asDays()
+                                )
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex justify-between">
+                            <div className="text-base text-gray-900">
+                              {moment(post.fromDate).format(
+                                "YYYY년 MM월 DD일 hh:mm"
+                              )}
+                            </div>
+
+                            <div className="w-5" />
+                            <div className="w-[0.07rem] bg-gray-200" />
+                            <div className="w-5" />
+                            <div className="text-base text-gray-900">
+                              {post.address}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })
                 )}
               </div>
             </div>
