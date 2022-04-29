@@ -28,7 +28,7 @@ const Header = () => {
                     </div>
 
                     {user ? (
-                        <a href={"ticket"} className="flex items-center">
+                        <a href={"/ticket"} className="flex items-center">
                             <img
                                 className="w-11 mr-2"
                                 src={require("../../asset/image/ticket.png")}
